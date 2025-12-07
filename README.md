@@ -1,31 +1,16 @@
-# The Ultimate Pokemon Picker
-Find your favorite Pokemon for each generation, each type, each gen of each type, of all time, and more! [Try it here!](https://cajunavenger.github.io/)
+# The Ultimate Skylander Picker
+Find your favorite Skylander for each game, each element, each game of each element, of all time, and more! [Try it here!]()
+
+ORIGINAL POKEMON FAVOURITE PICKER THIS APP IS BASED UPON IS BY CAJUNAVENGER, [YOU CAN FIND THEM AND THE ORIGINAL APP HERE](https://cajunavenger.github.io/)
+You can also find the original [Source Code](https://github.com/CajunAvenger/cajunavenger.github.io)
+
+ORIGINAL BACKGROUND MADE BY [BICEON ON REDDIT](https://www.reddit.com/r/skylanders/comments/1lroitn/skylanders_favourite_picker_template/#lightbox)
 
 ### The Main Grid
-Click the boxes in the grid to be given a selection of everything that meets the criteria and pick your favorites. You can now also remove a pick from your box by clicking again and selecting the X sprite.
+Click the boxes in the grid to be given a selection of everything that meets the criteria and pick your favorites. You can also remove a pick from your box by clicking again and selecting the X sprite.
 
 ### The Final Favorites
-The last square in each row and column will give you all the Pokemon you picked before it, for the ultimate showdown of who your favorite child is.
-
-### The Shiny Charm
-Clicking on the Shiny Charm will put you in Shiny Mode until you click it again. Clicking on a Pokemon box in Shiny Mode will turn that Pokemon shiny rather than repicking it. While in Shiny Mode you can also click on a new line of text by the Shiny Charm to instead convert *all* the sprites to their shiny form, even the new ones that you pick.
-### The Team Grid
-In the bottom left there's a section for selecting your team of six. To do this, click one of the boxes, which will then display "Picking...", then click any of the Pokemon in the grid boxes* and it will be copied over to that box. If you change the copied box, the team box won't change with it, which you can use to put unranked Pokemon in the team.
-
-\* Except the Favorite Spinda box, working on that one!
-
-### Build-a-Spinda Workshop
-You can now create your own custom Spinda! At the four corners of the box are number inputs where you can put a number from 0-16 to move Spinda's 4 spots left/right or up/down. Or you can randomize your Spinda until they turn dizzy.
-
-### And Alcremie too!
-There's now a spot for Alcremie forms, first picking the base form and then opening a second box for toppings.
-
-### Strict, Surplus, and Silly Modes
-**Strict Mode** will remove minor forms from most of the grid, and restrict Gimmick forms to that column.
-
-**Surplus Mode** will unlock Gimmick forms in the Generation row for both their launch and their base's home, and expand options like being able to choose Goomy instead of Goodra for Favorite Pseudo, or Cyndaquil as Gen 8 Starter.
-
-**Silly Mode** pulls out all the sprites, letting you pick GMax Pikachu for Gen 1 Starter, female Sneasel as your Gen 2 Ice type, Fairy Arceus as your Gen 4 Legend, Poltchageist as your Gen 8 Gimmick, Maskless Ogerpon Hearthflame as your Gen 9 Fire, even Duraladon as your Favorite Pseudo!
+The last square in each row and column will give you all the Skylanders you picked before it, for the ultimate showdown of who your favorite Skylander is.
 
 ## Write, Import, Download
 At the very bottom of the page there are three buttons and a textbox.
@@ -37,13 +22,6 @@ At the very bottom of the page there are three buttons and a textbox.
 **Import Code** then takes that code written in the textbox and puts it back into the grid.
 
 #### Overwriting
-If you want to do something like put Jolteon as your favorite Gen 3 starter or Chinchou as your favorite regional bird, put a filler Pokemon in that position, then click Write Code, replace that Pokemon's name with the one you want, then click Import Code. Most Pokemon will just be their names capitalized (SWELLOW), but alternate forms will have a tag (MEOWTH_2). You can verify a name by putting it in the grid by itself and writing the code.
+If you want to do something like put Crash Bandicoot as your favorite Spyros Adventure Fire or Kaos as your favorite land vehicle, put a filler Skylander in that position, then click Write Code, replace that Skylanders's name with the one you want, then click Import Code. Most Skylanders will just be their names with camel case capitalization (TriggerHappy), but alternate forms will have a preface (LightCoreEruptor). You can verify a name by putting it in the grid by itself and writing the code.
 
-## Additional Sprites
-Walking Wake and Iron Leaves sprites from [JordanosArt](https://twitter.com/JordanosArt).
-
-Archaludon, Dipplin, Raging Bolt, and Okidogi from [RetroNC](https://www.deviantart.com/retronc).
-
-Other Gen 9 sprites from [KingOfThe-X-Roads](https://www.deviantart.com/kingofthe-x-roads).
-
-Gen 6-8 and Substitute sprites from the [Smogon Community Sprite Project](https://docs.google.com/spreadsheets/d/1MCjDktTOOFjLKM5C-RW6SfBQGkjlxDSCZAZDma_ItuA/) and [PokeAPI](https://github.com/PokeAPI/sprites)
+All renders and photos from [Skylanders Character List](https://skylanderscharacterlist.com/) and [the Skylanders Wiki](https://skylanders.fandom.com/wiki/Main_Page)

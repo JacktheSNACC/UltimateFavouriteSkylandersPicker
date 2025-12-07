@@ -307,7 +307,7 @@ canvas {
 <script src="skylander_arrays.js"></script>
 <script src="translate.js"></script>
 <script language="JavaScript">
-	var domlink = window.location.protocol + "//" + window.location.host + "/";
+	var domlink = "";// window.location.protocol + "//" + window.location.host + "/";
 	var type_order = ["", "Air", "Life", "Undead", "Earth", "Fire", "Water", "Magic", "Tech", "Light", "Dark", "Favorite"];
     var type_eles = ["Air", "Life", "Undead", "Earth", "Fire", "Water", "Magic", "Tech", "Light", "Dark", "FavAlone"];
 	var other_order = ["", "Games", "Types", "AdventurePacks", "MagicItems", 
@@ -823,14 +823,6 @@ canvas {
 				if(!ele || ele.src == "./blank.png")
 					continue;
 				ctx.drawImage(ele, ele.offsetLeft, ele.offsetTop, 105, 105);
-				if(g == BOTTOM_ROWS && t == SPINDA_BOX) {
-					// render spinda
-					var spots = ["spot1", "spot2", "spot3", "spot4", "spinda2", "spinda-cover"];
-					for(var s in spots) {
-						ele = document.getElementById(spots[s]);
-						ctx.drawImage(ele, ele.offsetLeft, ele.offsetTop);
-					}
-				}
 			}
 		}
 		// draw the category names
