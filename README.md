@@ -1,5 +1,5 @@
 # The Ultimate Skylander Picker
-Find your favorite Skylander for each game, each element, each game of each element, of all time, and more! [Try it here!]()
+Find your favorite Skylander for each game, each element, each game of each element, of all time, and more! [Try it here!](https://jackthesnacc.github.io/UltimateFavouriteSkylandersPicker/)
 
 ORIGINAL POKEMON FAVOURITE PICKER THIS APP IS BASED UPON IS BY CAJUNAVENGER, [YOU CAN FIND THEM AND THE ORIGINAL APP HERE](https://cajunavenger.github.io/)
 You can also find the original [Source Code](https://github.com/CajunAvenger/cajunavenger.github.io)

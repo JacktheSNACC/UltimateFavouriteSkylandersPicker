@@ -3,7 +3,7 @@
 <title>Ultimate Favorite Skylander Picker</title>
 <meta name="description" content="Find your favorite Skylander of each Game, each type, and of all time.">
 <meta name="keywords" content="Ultimate, Favorite, Skylander, Skylanders, Picker">
-<meta name="author" content="Cajun">
+<meta name="author" content="JacktheSNACC/Cajun">
 <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
@@ -912,12 +912,11 @@ canvas {
 				start_at += 9 + font_size;
 			}
 		}
-        ctx.fillText(te, 240, 1245)
         canvas.style.zIndex = -1;
-        var dbutton = document.getElementById("downloader")
+		var dbutton = document.getElementById("downloader");
         dbutton.href = canvas.toDataURL("image/png");
         dbutton.innerHTML = getTranslString("downloader");
-        dbutton.click()
+		dbutton.click();
 	}
 	function rand(scale) {
 		return Math.floor(Math.random()*scale)

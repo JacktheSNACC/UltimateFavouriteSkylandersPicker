@@ -350,7 +350,7 @@ var arrays = {
 		[
 			"ChainReaction",
 			"RoBow",
-			"DrKrankcase",
+			"DrKrankcaseSensei",
 			"DrNeoCortex"
 		]
 	],
