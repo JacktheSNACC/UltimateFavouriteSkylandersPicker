@@ -772,7 +772,7 @@ var arrays = {
 		"Weeruptor",
 		"EggsellentWeeruptor",
 		"SmallFry",
-		"SidekickTerraBite",
+		"SidekickTerrabite",
 		"Terrabite",
 		"SidekickGillRunt",
 		"GillRunt",
@@ -788,7 +788,7 @@ var arrays = {
 	"LightCores": [
 		"LightCoreJetVac",
 		"LightCoreWarnado",
-		"LightCoreShroomBoom",
+		"LightCoreShroomboom",
 		"LightCoreBumbleBlast",
 		"LightCoreHex",
 		"LightCoreGrimCreeper",

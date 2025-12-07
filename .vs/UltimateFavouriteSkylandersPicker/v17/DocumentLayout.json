@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\Stuuf 2\\UltimateFavouriteSkylandersPicker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Stuuf 2\\UltimateFavouriteSkylandersPicker\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Stuuf 2\\UltimateFavouriteSkylandersPicker\\skylander_arrays.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:skylander_arrays.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Stuuf 2\\UltimateFavouriteSkylandersPicker\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Stuuf 2\\UltimateFavouriteSkylandersPicker\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
@@ -26,19 +26,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "skylander_arrays.js",
               "DocumentMoniker": "D:\\Stuuf 2\\UltimateFavouriteSkylandersPicker\\skylander_arrays.js",
               "RelativeDocumentMoniker": "skylander_arrays.js",
               "ToolTip": "D:\\Stuuf 2\\UltimateFavouriteSkylandersPicker\\skylander_arrays.js",
               "RelativeToolTip": "skylander_arrays.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEsBAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAkDAAAAAAAAAAAswBYDAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-12-07T09:45:41.84Z"
+              "WhenOpened": "2025-12-07T09:45:41.84Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -66,7 +67,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "index.html",
               "DocumentMoniker": "D:\\Stuuf 2\\UltimateFavouriteSkylandersPicker\\index.html",
               "RelativeDocumentMoniker": "index.html",
