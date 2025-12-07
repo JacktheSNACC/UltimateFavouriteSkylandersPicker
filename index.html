@@ -1,0 +1,1443 @@
+<html>
+<head>
+<title>Ultimate Favorite Skylander Picker</title>
+<meta name="description" content="Find your favorite Skylander of each Game, each type, and of all time.">
+<meta name="keywords" content="Ultimate, Favorite, Skylander, Skylanders, Picker">
+<meta name="author" content="Cajun">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<style>
+@font-face {
+    font-family: "Copenhagen Grotesk";
+    src: local("Copenhagen Grotesk"), url("David Engelby Foundry - CopenhagenGrotesk.ttf") format("truetype");
+}
+#grid-wrapper {
+	position: absolute;
+	top: 35px;
+	left: 0px;
+}
+#typebar {
+	position: absolute;
+	left: 98px;
+	top: 0px;
+	z-index: 3;
+}
+img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+canvas {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.back {
+  z-index: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#final {
+  z-index: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#button-wrapper {
+  top: 1408px; /*1572px;*/
+  left: 0px;
+  height: 50px;
+  position: absolute;
+  width: 1000px;
+}
+#btnPrint {
+	display: inline-block;
+	height: 50px;
+}
+#btnExport {
+	display: inline-block;
+	height: 50px;
+}
+#btnLoad {
+	display: inline-block;
+	height: 50px;
+}
+#btnReset {
+  top: 1408px;
+  left: 490px;
+  height: 50px;
+}
+#import {
+  top: 1476px;
+  position: absolute;
+  z-index: 4;
+}
+#credits {
+	top: 1456px;
+	left: 600px;
+	width: 600px;
+	position: absolute;
+}
+.bubble {
+  z-index: 0;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  border-radius: 25px;
+  background: #b4b4b4;
+	border-style: solid;
+	border-width: 2px;
+}
+.aura {
+  z-index: 0;
+  position: absolute;
+  height: 96px;
+  width: 96px;
+}
+#actual-btn {
+  z-index: 6;
+  position: absolute;
+  top: 1410px;
+  left: 1660px;
+}
+#charm {
+  z-index: 1;
+  position: absolute;
+  left: 25px;
+  top: 1110px;
+  cursor: pointer;
+}
+.preview {
+  z-index: 0;
+  position: absolute;
+  cursor: pointer;
+}
+
+</style>
+<style id="selection-placement">
+.translate-wrapper {
+	position: absolute;
+	width: 200px;
+	height: 100px;
+}
+.grid-text {
+	font-family: "Copenhagen Grotesk";
+	position: absolute;
+	color: white;
+	font-size: 18;
+	z-index: 3;
+	text-align: center;
+	width: inherit;
+	bottom: 35%;
+}
+.msg-text {
+	font-family: "Copenhagen Grotesk";
+	position: absolute;
+	color: white;
+	font-size: 24;
+	z-index: 3;
+	text-align: left;
+	width: inherit;
+	bottom: 35%;
+}
+.selectionBox {
+	cursor: pointer;
+	position: absolute;
+	z-index: 2;
+}
+.game-1-box {
+	top: 261px;
+}
+.game-2-box {
+	top: 367px;
+}
+.game-3-box {
+	top: 474px;
+}
+.game-4-box {
+	top: 581px;
+}
+.game-5-box {
+	top: 687px;
+}
+.game-6-box {
+	top: 794px;
+}
+.fav-type-box {
+	top: 901px;
+}
+.bottom-row1-box {
+	top: 1061px;
+}
+.bottom-row2-box {
+	top: 1221px;
+}
+.bottom-row1-label {
+	top: 1145px;
+}
+.bottom-row2-label {
+	top: 1305px;
+}
+.type-1-box {
+	left: 107px;
+}
+.type-2-box {
+	left: 214px;
+}
+.type-3-box {
+	left: 320px;
+}
+.type-4-box {
+	left: 427px;
+}
+.type-5-box {
+	left: 534px;
+}
+.type-6-box {
+	left: 640px;
+}
+.type-7-box {
+	left: 747px;
+}
+.type-8-box {
+	left: 853px;
+}
+.type-9-box {
+	left: 960px;
+}
+.type-10-box {
+	left: 1067px;
+}
+.type-22-box {
+	left: 1173px;
+}
+.bottom-box-1 {
+	left: 106px;
+}
+.bottom-box-2 {
+	left: 266px;
+}
+.bottom-box-3 {
+	left: 426px;
+}
+.bottom-box-4 {
+	left: 587px;
+}
+.bottom-box-5 {
+	left: 747px;
+}
+.bottom-box-6 {
+	left: 907px;
+}
+.bottom-box-7 {
+	left: 1066px;
+}
+.bottom-box-1-label {
+	left: 59px;
+}
+.bottom-box-2-label {
+	left: 220px;
+}
+.bottom-box-3-label {
+	left: 380px;
+}
+.bottom-box-4-label {
+	left: 540px;
+}
+.bottom-box-5-label {
+	left: 700px;
+}
+.bottom-box-6-label {
+	left: 862px;
+}
+.bottom-box-7-label {
+	left: 1020px;
+}
+#type-wrapper {
+  top: 190px;
+  left: 109px;
+  height: 100px;
+  position: absolute;
+  width: 2200px;
+}
+.type-box {
+	width: 99px;
+	height: 100px;
+	display: inline-block;
+}
+.type-text {
+	filter: drop-shadow(2px 2px 0px #000);
+	font-family: "Copenhagen Grotesk";
+	color: white;
+	font-size: 22;
+	z-index: 3;
+	text-align: center;
+	width: inherit;
+	position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+</style>
+<!--
+	Tried to make the axis sticky with jQuery
+	but doesn't stick properly on mobile
+	doesn't seem to account for zoom so basically useless
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$(window).scroll(function(){
+			$('#typebar').css({
+				'top': Math.min(891, $(window).scrollTop())
+			});
+			$('#gamebar').css({
+				'left': Math.min(2078, $(window).scrollLeft())
+			});
+		});
+	});
+</script>
+-->
+<script src="dex_mini.js"></script>
+<script src="skylander_arrays.js"></script>
+<script src="translate.js"></script>
+<script language="JavaScript">
+	var domlink = window.location.protocol + "//" + window.location.host + "/";
+	var type_order = ["", "Air", "Life", "Undead", "Earth", "Fire", "Water", "Magic", "Tech", "Light", "Dark", "Favorite"];
+    var type_eles = ["Air", "Life", "Undead", "Earth", "Fire", "Water", "Magic", "Tech", "Light", "Dark", "FavAlone"];
+	var other_order = ["", "Games", "Types", "AdventurePacks", "MagicItems", 
+		"Traps", "AirTraps", "LifeTraps", "UndeadTraps", "EarthTraps", "FireTraps", "WaterTraps", "MagicTraps", "TechTraps", "LightTraps", "DarkTraps", "KaosTraps",
+        "Villains", "AirVillains", "LifeVillains", "UndeadVillains", "EarthVillains", "FireVillains", "WaterVillains", "MagicVillains", "TechVillains", "LightVillains", "DarkVillains", "KaosVillains",
+        "Crystals", "AirCrystals", "LifeCrystals", "UndeadCrystals", "EarthCrystals", "FireCrystals", "WaterCrystals", "MagicCrystals", "TechCrystals", "LightCrystals", "DarkCrystals", 
+		"LandVehicles", "SkyVehicles", "SeaVehicles", "Minis", "LightCores", "Elites",
+		"Variants", "AirVariants", "LifeVariants", "UndeadVariants", "EarthVariants", "FireVariants", "WaterVariants", "MagicVariants", "TechVariants", "LightVariants", "DarkVariants"];
+	var zerogame_coords = [
+		[],
+		[156, 1111], [316, 1111], [476, 1111], [637, 1111],
+        [797, 1111], [797, 1111], [797, 1111], [797, 1111], [797, 1111], [797, 1111], [797, 1111], [797, 1111], [797, 1111], [797, 1111], [797, 1111], [797, 1111],
+        [957, 1111], [957, 1111], [957, 1111], [957, 1111], [957, 1111], [957, 1111], [957, 1111], [957, 1111], [957, 1111], [957, 1111], [957, 1111], [957, 1111],
+        [1116, 1111], [1116, 1111], [1116, 1111], [1116, 1111], [1116, 1111], [1116, 1111], [1116, 1111], [1116, 1111], [1116, 1111], [1116, 1111], [1116, 1111],
+		[156, 1271], [316, 1271], [476, 1271], [637, 1271], [797, 1271], [957, 1271],
+        [1116, 1271], [1116, 1271], [1116, 1271], [1116, 1271], [1116, 1271], [1116, 1271], [1116, 1271], [1116, 1271], [1116, 1271], [1116, 1271], [1116, 1271]
+	]
+	var BOTTOM_ROWS = 0;
+	var GAME_FAV = 11;
+	var TYPE_FAV = 7;
+	var MAX_BOX = 35;
+
+    var TRAP_MIN = 5;
+    var TRAP_MAX = 16;
+    var traps = false;
+
+    var VILLAIN_MIN = 17;
+    var VILLAIN_MAX = 28;
+    var villains = false;
+
+    var CRYSTAL_MIN = 29;
+    var CRYSTAL_MAX = 39;
+    var crystals = false;
+
+	var VARIANT_MIN = 46;
+    var VARIANT_MAX = 56;
+    var variants = false;
+
+	var choices = [];
+	var currently_previewing = [];
+	var currently_selecting = null;
+	var spriteFile = "Front";
+
+	var cookie_names = [
+		"game0", "game1", "game2", "game3", "game4",
+		"game5", "game6", "favs"
+	]
+
+	function resetChoices() {
+		choices = [[]];
+		for(var c in other_order)
+			choices[0].push("")
+		for(var i=1; i<=10; i++) {
+			choices.push([]);
+			for(var t in type_order) {
+				choices[i].push("")
+			}
+		}
+	}
+	resetChoices();
+	
+	function bubbleRows(count) {
+		if(count == 6) {
+			return [3, 3];
+		}else if(count == 12) {
+			return [4, 4, 4];
+		}
+		var column_soft_cap = 5;
+		var row_soft_cap = 5;
+		var column_hard_cap = 12;
+		var row_hard_cap = 5;
+		
+		var soft_size = column_soft_cap * row_soft_cap;
+		var hard_size = column_hard_cap * row_hard_cap;
+		
+		var row_sizes = [];
+		
+		if(count > hard_size) {
+			var excess = count - hard_size;
+			var nec_rows = Math.ceil(excess / column_hard_cap);
+			var row_break_cap = row_hard_cap + nec_rows
+			var holes = (column_hard_cap * nec_rows) - excess;
+			var extra_cols = Math.ceil(holes/row_break_cap);
+			var over = (extra_cols*row_break_cap) - holes
+			/*
+				so if given 61
+				excess = 1, nec_rows = ceil(1/12) = 1
+				and there are 11 new empty spots
+				partial/empty columns = ceil(holes/rows) = 2
+				we can remove 2 columns, leaving -1 empty slot
+				then readd those in a partial 11th column
+				11 - 10 - 10 - 10 - 10 - 10
+				
+				if given 70
+				excess = 10, nec_rows = ceil(10/12) = 1
+				holes = 2, extra_cols = 1, over = 3
+				12 - 12 - 12 - 11 - 11 - 11
+				
+				if given 73
+				excess = 13, nec_rows = ceil(13/12) = 2
+				holes = 11, extra_cols = 2, over = 3
+				11 - 11 - 11 - 10 - 10 - 10 - 10
+				
+			*/
+			for(var i=0; i<row_break_cap; i++) {
+				var cols = column_hard_cap - extra_cols;
+				if(over > 0) {
+					cols++;
+					over--;
+				}
+				row_sizes.push(cols);
+			}
+			return row_sizes;
+		}
+		else if(count <= soft_size) {
+			// this fits in the 5x5
+			var over = count % column_soft_cap;
+			var full_rows = Math.floor(count / column_soft_cap);
+			if(full_rows < 1) {
+				// short row
+				return [count];
+			}
+			else if(over > 0 && over < full_rows) {
+				// prefer adding 1 to some complete rows
+				// than adding a new very short row
+				for(var i=1; i<full_rows+1; i++) {
+					var cols = column_soft_cap;
+					if(i != full_rows) {
+						cols++;
+						over--;
+					}else{
+						cols += over;
+					}
+					row_sizes.push(cols);
+				}
+				return row_sizes;
+			}
+			else{
+				for(var i=0; i<full_rows; i++)
+					row_sizes.push(column_soft_cap);
+				if(over > 0)
+					row_sizes.push(over);
+				return row_sizes;
+			}
+		}else{
+			var has_over = (over != 0);
+			var full_columns = Math.floor(count / row_hard_cap);
+			var over = count % row_hard_cap;
+			for(var i=1; i<=row_hard_cap; i++) {
+				var cols = full_columns;
+				if(has_over) {
+					if(i != row_hard_cap) {
+						cols++;
+						over--;
+					}else{
+						cols += over;
+					}
+				}
+				row_sizes.push(cols);
+			}
+			return row_sizes;
+		}
+	}
+	function openBox(game, type) {
+		var type_arr = null;
+		if(currently_selecting != null) {
+			// if we've clicked the same box, close it and exit
+			if(currently_selecting[0] == game && currently_selecting[1] == type) {
+				closeBox();
+				return;
+			}
+			// otherwise close any open boxes and keep going
+			closeBox();
+		}
+		currently_selecting = [game, type];
+		if(game == BOTTOM_ROWS) {
+			// bottom stuff
+			var box = other_order[type];
+			if(arrays[box]) {
+				currently_previewing = arrays[box];
+				//if(box == "Types")
+				//	type_arr = calcTypes();
+			}
+		}else if(game == TYPE_FAV && type == GAME_FAV) {
+			// super favorite
+			currently_previewing = [];
+			for(var c=1; c<choices.length; c++) {
+				start = GAME_FAV;
+				if(c == TYPE_FAV)
+					start = 1;
+				for(var i=start; i<GAME_FAV+1; i++) {
+					if(choices[c][i] == "" || choices[c][i] == undefined)
+						continue;
+					if(currently_previewing.includes(choices[c][i]))
+						continue;
+					currently_previewing.push(choices[c][i])
+				}
+			}
+		}else if(game == TYPE_FAV) {
+			// favorite for a type
+			currently_previewing = [];
+			for(var g in choices) {
+				if(g == game || g == 0)
+					continue;
+				if(choices[g][type] == "" || choices[g][type] == undefined)
+					continue;
+				if(currently_previewing.includes(choices[g][type]))
+					continue;
+				currently_previewing.push(choices[g][type]);
+			}
+		}else if(type == GAME_FAV) {
+			// favorite for a game
+			currently_previewing = [];
+			for(var m in choices[game]) {
+				if(m == type)
+					continue;
+				if(choices[game][m] == "" || choices[game][m] == undefined)
+					continue;
+				if(currently_previewing.includes(choices[game][m]))
+					continue;
+				currently_previewing.push(choices[game][m]);
+			}
+		}else{
+			currently_previewing = arrays[type_order[type]][game];
+		}
+		/*
+		var maxCols = Math.max(Math.ceil(currently_previewing.length/5), 5)
+		var maxRows = 5
+		if(currently_previewing.length <= 20)
+			maxRows = Math.ceil(currently_previewing.length/5)
+		var underflow = maxCols-(currently_previewing.length%maxCols)
+		if(underflow == maxCols)
+			underflow = 0
+		var bubble_img = "./bubble/"+maxRows+"r.png";
+		if(maxCols > 5) {
+			bubble_img = "./bubble/"+maxCols+"c.png";
+		}
+		*/
+		// get upgraded bubble row numbers
+		var row_numbers = bubbleRows(currently_previewing.length);
+		// save to figure out offset rows
+		var max_cols = row_numbers[0];
+		// position the bubble
+		var left_corner = (type*99)+96
+		var top_corner = (game*99)+199
+		if(game == BOTTOM_ROWS) {
+			left_corner = zerogame_coords[Math.min(56, type)][0]; + 100
+			top_corner = zerogame_coords[Math.min(56, type)][1]; + 100
+		}
+		var rightp = left_corner + Math.max(110, 110*max_cols);
+        var botp = top_corner + Math.max(109, 109*row_numbers.length);
+		if(rightp > 2276)
+			left_corner -= (rightp-2276)
+		if(botp > 1571)
+			top_corner -= (109*(row_numbers.length+1))
+		// current index of currently_previewing
+		var pr_ind = 0;
+		for(var r=0; r<row_numbers.length; r++) {
+			var skylander_in_row = row_numbers[r];
+			var hole_offset = (max_cols - skylander_in_row)*49.5;
+			for(var c=0; c<skylander_in_row; c++) {
+				var skylander_key = currently_previewing[pr_ind];
+				// if this skylander is already in the box, put the remove option instead
+				var skylander_data = keyToMonData(skylander_key);
+				let tooltip = skylander_data.form_data.name + (skylander_data.is_fs ? " (female)" : "");
+				if(choices[currently_selecting[0]][currently_selecting[1]] == skylander_key) {
+					skylander_key = "BLANK";
+					tooltip = "Deselect " + tooltip;
+				}
+				else if(currently_selecting[1] == 19) {
+					let game = starterGame(skylander_key, currently_selecting[0]);
+					if(game != "")
+						tooltip += " (" + game + ")";
+				}
+				var skylander_img = domlink + spriteFile + "/" + skylander_key + ".png"
+				var ele = document.getElementById('preview'+pr_ind);
+				if(!ele) {
+					ele = document.createElement("img");
+					ele.classList = "preview";
+					ele.id = "preview" + pr_ind;
+                    ele.height = 105;
+                    ele.width = 105;
+					ele.onclick = function() {pickSkylander(pr_ind)};
+					document.getElementById("preview-boxes").appendChild(ele);
+				}
+				ele.src = skylander_img;
+				ele.style.zIndex = 9;
+				
+				ele.title = tooltip;
+				//change the position
+                ele.style.top = top_corner + 109 *r;
+                ele.style.left = left_corner + 109 *c + hole_offset;
+				if(type_arr) {
+					// manipulate the 1st/2nd/3rd auras
+					var tind = type_arr.indexOf(currently_previewing[pr_ind]);
+					if(tind >= 0) {
+						var aura = document.getElementById("aura"+tind);
+						aura.src = "/aura/" + tind + ".png";
+                        aura.style.top = top_corner + 109 *r;
+                        aura.style.left = left_corner + 109 *c + hole_offset;
+						aura.style.zIndex = 8;
+					}
+				}
+				pr_ind++;
+			}
+		}
+		/*
+		for(var i=0; i<currently_previewing.length; i++) {
+			var skylander_key = currently_previewing[i];
+			// if this skylander is already in the box, put the remove option instead
+			if(choices[currently_selecting[0]][currently_selecting[1]] == skylander_key)
+				skylander_key = "BLANK";
+			var skylander_img = domlink + spriteFile + "/" + skylander_key + ".png"
+			var ele = document.getElementById('preview'+i)
+			ele.src = skylander_img;
+			ele.style.zIndex = 9;
+			//change the position
+			var row = Math.floor(i/maxCols);
+			var col = i%maxCols;
+			var offset = 0;
+			if(row+1 == maxRows)
+				offset = underflow*99/2;
+			ele.style.top = top_corner + (row*99);
+			ele.style.left = left_corner + (col*99) + offset;
+		}*/
+		var bubble = document.getElementById('bubble')
+		//bubble.src = bubble_img;
+		bubble.style.left = left_corner;
+		bubble.style.top = top_corner;
+		bubble.style.zIndex = 8;
+        bubble.style.width = Math.max(99, max_cols * 109) + 1;
+        bubble.style.height = Math.max(99, row_numbers.length * 109) + 1;
+	}
+	function closeBox() {
+		for(var i=0; i<currently_previewing.length; i++) {
+			var ele = document.getElementById('preview'+i);
+			ele.src = "./blank.png";
+			ele.style.zIndex = 0;
+		}
+		document.getElementById('bubble').style.zIndex = 0;
+		document.getElementById('aura0').style.zIndex = 0;
+		document.getElementById('aura1').style.zIndex = 0;
+		document.getElementById('aura2').style.zIndex = 0;
+
+		currently_previewing = [];
+		currently_selecting = null;
+		variants = false;
+		traps = false;
+		villains = false;
+		crystals = false;
+	}
+	
+	function pickSkylander(num) {
+		if(currently_selecting === null)
+			return;
+		if(currently_previewing.length < num)
+			return;
+        var variantold = 0;
+        var trapold = 0;
+        var villainold = 0;
+        var crystalold = 0;
+		if (currently_selecting[1] > VARIANT_MIN && currently_selecting[1] <= VARIANT_MAX) {
+			variantold = currently_selecting[1];
+			currently_selecting[1] = VARIANT_MIN;
+		}
+        if (currently_selecting[1] > TRAP_MIN && currently_selecting[1] <= TRAP_MAX) {
+            trapold = currently_selecting[1];
+            currently_selecting[1] = TRAP_MIN;
+		}
+        if (currently_selecting[1] > VILLAIN_MIN && currently_selecting[1] <= VILLAIN_MAX) {
+            villainold = currently_selecting[1];
+            currently_selecting[1] = VILLAIN_MIN;
+		}
+        if (currently_selecting[1] > CRYSTAL_MIN && currently_selecting[1] <= CRYSTAL_MAX) {
+            crystalold = currently_selecting[1];
+            currently_selecting[1] = CRYSTAL_MIN;
+        }
+		var targetBox = document.getElementById('box'+currently_selecting[0]+"_"+currently_selecting[1]);
+
+        if (!variants && !villains && !traps && !crystals && choices[currently_selecting[0]][currently_selecting[1]] == currently_previewing[num]) {
+            choices[currently_selecting[0]][currently_selecting[1]] = "";
+            targetBox.src = "./blank.png";
+        } else {
+            choices[currently_selecting[0]][currently_selecting[1]] = currently_previewing[num];
+            targetBox.src = domlink + spriteFile + "/" + currently_previewing[num] + ".png"
+		}
+
+		if (currently_selecting[0] == 0 && currently_selecting[1] == VARIANT_MIN) {
+			// variants
+			if (!variants) {
+				// open variants
+				var game = currently_selecting[0];
+				closeBox();
+				variants = true;
+				openBox(game, VARIANT_MIN + 1 + num);
+			} else {
+                // apply variants
+                writeCookie(currently_selecting[0]);
+				closeBox();
+			}
+        } else if (currently_selecting[0] == 0 && currently_selecting[1] == TRAP_MIN) {
+            // traps
+            if (!traps) {
+                // open traps
+                var game = currently_selecting[0];
+                closeBox();
+                traps = true;
+                openBox(game, TRAP_MIN + 1 + num);
+            } else {
+                // apply traps
+                writeCookie(currently_selecting[0]);
+                closeBox();
+            }
+        } else if (currently_selecting[0] == 0 && currently_selecting[1] == VILLAIN_MIN) {
+            // villains
+            if (!villains) {
+                // open villains
+                var game = currently_selecting[0];
+                closeBox();
+                villains = true;
+                openBox(game, VILLAIN_MIN + 1 + num);
+            } else {
+                // apply villains
+                writeCookie(currently_selecting[0]);
+                closeBox();
+            }
+        } else if (currently_selecting[0] == 0 && currently_selecting[1] == CRYSTAL_MIN) {
+            // crystals
+            if (!crystals) {
+                // open crystals
+                var game = currently_selecting[0];
+                closeBox();
+                crystals = true;
+                openBox(game, CRYSTAL_MIN + 1 + num);
+            } else {
+                // apply crystals
+                writeCookie(currently_selecting[0]);
+                closeBox();
+            }
+        } else {
+            writeCookie(currently_selecting[0]);
+            closeBox();
+		}
+	}
+	
+	function printTextbox() {
+		var output = "# Don't like my choices? You can overrule them here!\n# Write Code will put a text version of the grid here,\n# Then you can edit the names and Import Code to replace the images.\n# Most skylander are just their named capitalized, like SWELLOW.\n# Alternate forms have specific tags, like MEOWTH_2 for Galarian Meowth.\n# You can also use this to keep backups\n";
+		for(var g=0; g<choices.length; g++) {
+			for(var t=0; t<choices[g].length; t++) {
+				var ele = document.getElementById('box'+g+"_"+t);
+				if(ele == null) {
+					output += ",";
+					continue;
+				}
+				if(choices[g][t])
+					output += choices[g][t]
+				output += ",";
+			}
+			output += "\n";
+		}
+		document.getElementById('import').value = output;
+	}
+	function loadTextbox(importbox) {
+		var save_cookie = false;
+		if(!importbox) {
+			importbox = document.getElementById('import').value;
+			save_cookie = true;
+		}
+		var lines = importbox.replace(/# ?[^\n]+\n/g, "").split("\n");
+		var game = -1;
+		for(var l in lines) {
+			if(lines[l] == "" || !lines[l].match(/,/))
+				continue;
+			game++;
+			if(save_cookie) {
+				setCookie(getCookieName(game), lines[l]);
+			}
+			var ents = lines[l].split(",");
+			for(var e in ents) {
+				var name = ents[e].replace("&", "");
+				ele = document.getElementById('box'+game+'_'+e);
+				if(!ele)
+					continue;
+				if(!choices[l] || name == "") {
+					ele.src = "./blank.png";
+					continue;
+				}
+				choices[l][e] = name
+				var sf = spriteFile;
+				ele.src = domlink + sf + "/" + name + ".png";
+			}
+		}
+		
+	}
+	function resetGrid() {
+		if(confirm(getTranslString("gridConfirm"))) {
+			for(var c in cookie_names) {
+				deleteCookie(cookie_names[c]);
+			}
+			loadCookies();
+		}
+		resetChoices();
+	}
+
+	function drawFinal() {
+		var canvas = document.getElementById("final");
+		var ctx = canvas.getContext("2d");
+		ctx.drawImage(document.getElementById('back'), 0, 0);
+		// draw the skylander
+		for(var g=0; g<11; g++) {
+			for(var t=1; t<=MAX_BOX; t++) {
+				var ele = document.getElementById('box'+g+'_'+t);
+				if(!ele || ele.src == "./blank.png")
+					continue;
+				ctx.drawImage(ele, ele.offsetLeft, ele.offsetTop, 105, 105);
+				if(g == BOTTOM_ROWS && t == SPINDA_BOX) {
+					// render spinda
+					var spots = ["spot1", "spot2", "spot3", "spot4", "spinda2", "spinda-cover"];
+					for(var s in spots) {
+						ele = document.getElementById(spots[s]);
+						ctx.drawImage(ele, ele.offsetLeft, ele.offsetTop);
+					}
+				}
+			}
+		}
+		// draw the category names
+		var label_w = 200;
+		var label_h = 100;
+		var break_at = 190;
+		var font_name = "Copenhagen Grotesk";
+		ctx.textAlign = "center";
+		ctx.fillStyle = "#ffffff";
+		for(var cat in fav_cats) {
+			var ele = document.getElementById(fav_cats[cat]);
+			if(!ele)
+				continue;
+			var par = ele.offsetParent;
+			var full_text = ele.innerHTML;
+			var test_pieces = full_text.split(/<br\/?>/);
+			var font_px = (ele.style.fontSize || "27px")
+			var font_size = parseInt(font_px.replace(/px/, ""));
+			var canvas_font = font_px + " " + font_name
+			ctx.font = canvas_font;
+			var pieces = [];
+			// check text wrapping
+			for(var t in test_pieces) {
+				var words = test_pieces[t].split(" ");
+				if(words.length == 1) {
+					// just one word, its gotta go regardless
+					pieces.push(test_pieces[t]);
+					continue;
+				}
+				var plen = ctx.measureText(test_pieces[t]).width;
+				//console.log(plen);
+				if(plen > break_at) {
+					var curr = words[0];
+					for(var i=1; i<words.length; i++) {
+						var testplen = ctx.measureText(curr + " " + words[i]).width;
+						if(testplen > break_at) {
+							// add the current, then make words[i] the current
+							pieces.push(curr);
+							curr = words[i];
+						}else{
+							// add words[i] to current
+							curr += " " + words[i];
+						}
+					}
+					// then add the remainder
+					pieces.push(curr);
+				}else{
+					pieces.push(test_pieces[t]);
+				}
+				//console.log(pieces);
+			}
+			// add text pieces from the bottom up
+			for(var p=0; p<pieces.length; p++) {
+				var fragment = pieces[pieces.length-1-p];
+				var label_t = 30 + par.offsetTop + (font_size+5)*(1-p);
+				var label_l = 100 + par.offsetLeft;
+				ctx.fillText(fragment, label_l, label_t);
+			}
+		}
+		// draw the type names
+		for(var typ in type_eles) {
+			var ele = document.getElementById(type_eles[typ]);
+			if(!ele)
+				continue;
+			var par = ele.offsetParent;
+			var full_text = ele.innerHTML;
+			var pieces = full_text.split(/<br\/?>/);
+			var font_px = (ele.style.fontSize || "25px")
+			var font_size = parseInt(font_px.replace(/px/, ""));
+			var canvas_font = font_px + " " + font_name
+			ctx.font = canvas_font;
+			var start_at = 61;
+			if(pieces.length > 1)
+				start_at -= 15;
+			if(font_size < 25)
+				start_at -= Math.round((25-font_size)/2)
+			for(var p=0; p<pieces.length; p++) {
+				var fragment = pieces[p];
+				var label_t = start_at;
+				var label_l = 148 + par.offsetLeft;
+				// draw drop shadow offset 2 px;
+				ctx.fillStyle = "#000000";
+				ctx.fillText(fragment, label_l+2, label_t+2);
+				// draw real text
+				ctx.fillStyle = "#ffffff";
+				ctx.fillText(fragment, label_l, label_t);
+				start_at += 9 + font_size;
+			}
+		}
+	}
+	function rand(scale) {
+		return Math.floor(Math.random()*scale)
+	}
+
+	function calcTypes() {
+		var scores = {};
+		for(var t in type_count_array)
+			scores[type_count_array[t]] = 0;
+		for(var g in choices) {
+			for(var m in choices[g]) {
+				var skylander_name = choices[g][m];
+				if(!skylander_name || skylander_name == "")
+					continue;
+				var skylander_types = rev_map[skylander_name];
+				if(!skylander_types)
+					continue;
+				for(let ty in skylander_types)
+					scores[skylander_types[ty]]++;
+			}
+		}
+		// don't count spinda
+		scores["Normal"]--;
+		type_count_array.sort(function(a, b) {
+			return scores[b] - scores[a];
+		})
+		var fin = [];
+		for(var i=0; i<3; i++) {
+			if(scores[type_count_array[i]] > 0)
+				fin.push(type_count_array[i])
+		}
+		return fin;
+	}
+
+	// returns the cookie with the given name,
+	// or undefined if not found
+	function getCookie(name) {
+	  var matches = document.cookie.match(new RegExp(
+		"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+	  ));
+	  return matches ? decodeURIComponent(matches[1]) : undefined;
+	}
+	function setCookie(name, value) {
+
+	  options = {
+		path: '/',
+	    samesite: 'strict'
+	  };
+	  options.Expires = new Date(new Date().getTime() + 365*24*60*60*1000);
+
+	  if (options.Expires instanceof Date) {
+		options.Expires = options.Expires.toUTCString();
+	  }
+
+	  var updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+	  for (var optionKey in options) {
+		updatedCookie += "; " + optionKey;
+		var optionValue = options[optionKey];
+		if (optionValue !== true) {
+		  updatedCookie += "=" + optionValue;
+		}
+	  }
+
+	  document.cookie = updatedCookie;
+	}
+	
+	function deleteCookie(name) {
+	  setCookie(name, "", {
+		'max-age': -1
+	  })
+	}
+	
+	// cookie-fy a game and save it
+	function writeCookie(g) {
+		var cookie_text = "";
+		for(var t=0; t<choices[g].length; t++) {
+			var ele = document.getElementById('box'+g+"_"+t);
+			if(ele == null) {
+				cookie_text += ",";
+				continue;
+			}
+			if(choices[g][t])
+				cookie_text += choices[g][t]
+			cookie_text += ",";
+		}
+		setCookie(getCookieName(g), cookie_text);
+	}
+	function loadCookies() {
+		var searchParams = new URL(location).searchParams;
+		var langCode = searchParams.get("lang");
+		var modeCode = searchParams.get("mode");
+		if(langCode) {
+			changeLang(langCode);
+			document.getElementById("language-select").value = lang_code[currentLang];
+		}
+		if(modeCode) {
+			MODE.SITE = Number(modeCode);
+			remodeArrays();
+			document.getElementById("mode-select").value = MODE.SITE;
+		}
+		var cookie_vals = [];
+		for(var c in cookie_names)
+			cookie_vals.push(",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,");
+		var cookies = document.cookie.split(/; ?/);
+		for(var c in cookies) {
+			var pair = cookies[c].match(/([^=]+) ?= ?([^=;]+)/);
+			if(!pair)
+				continue;
+			var cname = decodeURIComponent(pair[1]);
+			var cval = decodeURIComponent(pair[2]);
+			var g = cookie_names.indexOf(cname);
+			if(g == -1) {
+				//special cookies
+			}else{
+				cookie_vals[g] = cval;
+			}
+		}
+		loadTextbox(cookie_vals.join("\n"));
+		
+	}
+	function getCookieName(g) {
+		if(parseInt(g) < TYPE_FAV)
+			return "game"+g;
+		if(g == TYPE_FAV)
+			return "favs";
+	}
+</script>
+</head>
+<body onLoad="loadCookies();">
+<!--Language: <select id="language-select" onchange="updateLang()">
+	<option value="en">English</option>
+	<option value="pt">Português</option>
+	<option value="fr">Français</option>
+	<option value="es">Español</option>
+	<option value="el">Español (Latino)</option>
+	<option value="de">Deutsch</option>
+	<option value="it">Italiano</option>
+	<option value="ne">Nederlands</option>
+	<option value="ja">日本</option>
+	<option value="ko">한국어</option>
+	<option value="zhs">简中</option>
+	<option value="zht">繁中</option>
+</select>-->
+<!--Mode: <select id="mode-select" onchange="updateMode()">
+	<option value="1">Strict</option>
+	<option value="2" selected>Standard</option>
+	<option value="3">Silly</option>
+</select>-->
+<div id="grid-wrapper">
+<!--<img class="back" id="back" src="https://cajunavenger.github.io/background.png" alt="" height="1571" width="2276" onclick="closeBox();"/>-->
+<img class="back" id="back" src="./SkylandersBack.png" alt="" height="1407" width="1280" onclick="closeBox();"/>
+<canvas id="final" height="1407" width="1280"></canvas>
+<!--<img class="selectionBox team-top team-left" id="box0_1" onclick="openBox(0, 1);" src="./blank.png" height="106" width="106">
+<img class="selectionBox team-top team-mid" id="box0_2" onclick="openBox(0, 2);" src="./blank.png" height="106" width="106">
+<img class="selectionBox team-top team-right" id="box0_3" onclick="openBox(0, 3);" src="./blank.png" height="106" width="106">
+<img class="selectionBox team-bottom team-left" id="box0_4" onclick="openBox(0, 4);" src="./blank.png" height="106" width="106">
+<img class="selectionBox team-bottom team-mid" id="box0_5" onclick="openBox(0, 5);" src="./blank.png" height="106" width="106">
+<img class="selectionBox team-bottom team-right" id="box0_6" onclick="openBox(0, 6);" src="./blank.png" height="106" width="106">-->
+<img class="selectionBox bottom-row1-box bottom-box-1" id="box0_1" onclick="openBox(0, 1);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row1-box bottom-box-2" id="box0_2" onclick="openBox(0, 2);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row1-box bottom-box-3" id="box0_3" onclick="openBox(0, 3);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row1-box bottom-box-4" id="box0_4" onclick="openBox(0, 4);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row1-box bottom-box-5" id="box0_5" onclick="openBox(0, 5);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row1-box bottom-box-6" id="box0_17" onclick="openBox(0, 17);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row1-box bottom-box-7" id="box0_29" onclick="openBox(0, 29);" src="./blank.png" height="106" width="106">
+<!--<img class="selectionBox bottom-row1-box bottom-box-8" id="box0_14" onclick="openBox(0, 14);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row1-box bottom-box-9" id="box0_15" onclick="openBox(0, 15);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row1-box bottom-box-10" id="box0_34" onclick="openBox(0, 34);" src="./blank.png" height="106" width="106">-->
+<img class="selectionBox bottom-row2-box bottom-box-1" id="box0_40" onclick="openBox(0, 40);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row2-box bottom-box-2" id="box0_41" onclick="openBox(0, 41);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row2-box bottom-box-3" id="box0_42" onclick="openBox(0, 42);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row2-box bottom-box-4" id="box0_43" onclick="openBox(0, 43);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row2-box bottom-box-5" id="box0_44" onclick="openBox(0, 44);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row2-box bottom-box-6" id="box0_45" onclick="openBox(0, 45);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row2-box bottom-box-7" id="box0_46" onclick="openBox(0, 46);" src="./blank.png" height="106" width="106">
+<!--<img class="selectionBox bottom-row2-box bottom-box-8" id="box0_23" onclick="openBox(0, 23);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row2-box bottom-box-9" id="box0_24" onclick="openBox(0, 24);" src="./blank.png" height="106" width="106">
+<img class="selectionBox bottom-row2-box bottom-box-10" id="box0_35" onclick="openBox(0, 35);" src="./blank.png" height="106" width="106">-->
+<img class="selectionBox game-1-box type-1-box" id="box1_1" onclick="openBox(1, 1);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-2-box" id="box1_2" onclick="openBox(1, 2);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-3-box" id="box1_3" onclick="openBox(1, 3);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-4-box" id="box1_4" onclick="openBox(1, 4);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-5-box" id="box1_5" onclick="openBox(1, 5);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-6-box" id="box1_6" onclick="openBox(1, 6);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-7-box" id="box1_7" onclick="openBox(1, 7);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-8-box" id="box1_8" onclick="openBox(1, 8);" src="./blank.png" height="106" width="106">
+<!--<img class="selectionBox game-1-box type-9-box" id="box1_9" onclick="openBox(1, 9);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-10-box" id="box1_10" onclick="openBox(1, 10);" src="./blank.png" height="106" width="106">-->
+<!--<img class="selectionBox game-1-box type-11-box" id="box1_11" onclick="openBox(1, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-12-box" id="box1_12" onclick="openBox(1, 12);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-13-box" id="box1_13" onclick="openBox(1, 13);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-14-box" id="box1_14" onclick="openBox(1, 14);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-15-box" id="box1_15" onclick="openBox(1, 15);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-16-box" id="box1_16" onclick="openBox(1, 16);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-17-box" id="box1_17" onclick="openBox(1, 17);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-18-box" id="box1_18" onclick="openBox(1, 18);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-19-box" id="box1_19" onclick="openBox(1, 19);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-20-box" id="box1_20" onclick="openBox(1, 20);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-1-box type-21-box" id="box1_21" onclick="openBox(1, 21);" src="./blank.png" height="106" width="106">-->
+<img class="selectionBox game-1-box type-22-box" id="box1_11" onclick="openBox(1, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-1-box" id="box2_1" onclick="openBox(2, 1);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-2-box" id="box2_2" onclick="openBox(2, 2);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-3-box" id="box2_3" onclick="openBox(2, 3);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-4-box" id="box2_4" onclick="openBox(2, 4);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-5-box" id="box2_5" onclick="openBox(2, 5);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-6-box" id="box2_6" onclick="openBox(2, 6);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-7-box" id="box2_7" onclick="openBox(2, 7);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-8-box" id="box2_8" onclick="openBox(2, 8);" src="./blank.png" height="106" width="106">
+<!--<img class="selectionBox game-2-box type-9-box" id="box2_9" onclick="openBox(2, 9);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-10-box" id="box2_10" onclick="openBox(2, 10);" src="./blank.png" height="106" width="106">-->
+<!--<img class="selectionBox game-2-box type-11-box" id="box2_11" onclick="openBox(2, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-12-box" id="box2_12" onclick="openBox(2, 12);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-13-box" id="box2_13" onclick="openBox(2, 13);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-14-box" id="box2_14" onclick="openBox(2, 14);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-15-box" id="box2_15" onclick="openBox(2, 15);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-16-box" id="box2_16" onclick="openBox(2, 16);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-17-box" id="box2_17" onclick="openBox(2, 17);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-18-box" id="box2_18" onclick="openBox(2, 18);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-19-box" id="box2_19" onclick="openBox(2, 19);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-20-box" id="box2_20" onclick="openBox(2, 20);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-2-box type-21-box" id="box2_21" onclick="openBox(2, 21);" src="./blank.png" height="106" width="106">-->
+<img class="selectionBox game-2-box type-22-box" id="box2_11" onclick="openBox(2, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-1-box" id="box3_1" onclick="openBox(3, 1);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-2-box" id="box3_2" onclick="openBox(3, 2);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-3-box" id="box3_3" onclick="openBox(3, 3);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-4-box" id="box3_4" onclick="openBox(3, 4);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-5-box" id="box3_5" onclick="openBox(3, 5);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-6-box" id="box3_6" onclick="openBox(3, 6);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-7-box" id="box3_7" onclick="openBox(3, 7);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-8-box" id="box3_8" onclick="openBox(3, 8);" src="./blank.png" height="106" width="106">
+<!--<img class="selectionBox game-3-box type-9-box" id="box3_9" onclick="openBox(3, 9);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-10-box" id="box3_10" onclick="openBox(3, 10);" src="./blank.png" height="106" width="106">-->
+<!--<img class="selectionBox game-3-box type-11-box" id="box3_11" onclick="openBox(3, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-12-box" id="box3_12" onclick="openBox(3, 12);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-13-box" id="box3_13" onclick="openBox(3, 13);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-14-box" id="box3_14" onclick="openBox(3, 14);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-15-box" id="box3_15" onclick="openBox(3, 15);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-16-box" id="box3_16" onclick="openBox(3, 16);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-17-box" id="box3_17" onclick="openBox(3, 17);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-18-box" id="box3_18" onclick="openBox(3, 18);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-19-box" id="box3_19" onclick="openBox(3, 19);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-20-box" id="box3_20" onclick="openBox(3, 20);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-3-box type-21-box" id="box3_21" onclick="openBox(3, 21);" src="./blank.png" height="106" width="106">-->
+<img class="selectionBox game-3-box type-22-box" id="box3_11" onclick="openBox(3, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-1-box" id="box4_1" onclick="openBox(4, 1);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-2-box" id="box4_2" onclick="openBox(4, 2);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-3-box" id="box4_3" onclick="openBox(4, 3);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-4-box" id="box4_4" onclick="openBox(4, 4);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-5-box" id="box4_5" onclick="openBox(4, 5);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-6-box" id="box4_6" onclick="openBox(4, 6);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-7-box" id="box4_7" onclick="openBox(4, 7);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-8-box" id="box4_8" onclick="openBox(4, 8);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-9-box" id="box4_9" onclick="openBox(4, 9);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-10-box" id="box4_10" onclick="openBox(4, 10);" src="./blank.png" height="106" width="106">
+<!--<img class="selectionBox game-4-box type-11-box" id="box4_11" onclick="openBox(4, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-12-box" id="box4_12" onclick="openBox(4, 12);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-13-box" id="box4_13" onclick="openBox(4, 13);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-14-box" id="box4_14" onclick="openBox(4, 14);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-15-box" id="box4_15" onclick="openBox(4, 15);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-16-box" id="box4_16" onclick="openBox(4, 16);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-17-box" id="box4_17" onclick="openBox(4, 17);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-18-box" id="box4_18" onclick="openBox(4, 18);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-19-box" id="box4_19" onclick="openBox(4, 19);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-20-box" id="box4_20" onclick="openBox(4, 20);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-4-box type-21-box" id="box4_21" onclick="openBox(4, 21);" src="./blank.png" height="106" width="106">-->
+<img class="selectionBox game-4-box type-22-box" id="box4_11" onclick="openBox(4, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-1-box" id="box5_1" onclick="openBox(5, 1);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-2-box" id="box5_2" onclick="openBox(5, 2);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-3-box" id="box5_3" onclick="openBox(5, 3);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-4-box" id="box5_4" onclick="openBox(5, 4);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-5-box" id="box5_5" onclick="openBox(5, 5);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-6-box" id="box5_6" onclick="openBox(5, 6);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-7-box" id="box5_7" onclick="openBox(5, 7);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-8-box" id="box5_8" onclick="openBox(5, 8);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-9-box" id="box5_9" onclick="openBox(5, 9);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-10-box" id="box5_10" onclick="openBox(5, 10);" src="./blank.png" height="106" width="106">
+<!--<img class="selectionBox game-5-box type-11-box" id="box5_11" onclick="openBox(5, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-12-box" id="box5_12" onclick="openBox(5, 12);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-13-box" id="box5_13" onclick="openBox(5, 13);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-14-box" id="box5_14" onclick="openBox(5, 14);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-15-box" id="box5_15" onclick="openBox(5, 15);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-16-box" id="box5_16" onclick="openBox(5, 16);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-17-box" id="box5_17" onclick="openBox(5, 17);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-18-box" id="box5_18" onclick="openBox(5, 18);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-19-box" id="box5_19" onclick="openBox(5, 19);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-20-box" id="box5_20" onclick="openBox(5, 20);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-5-box type-21-box" id="box5_21" onclick="openBox(5, 21);" src="./blank.png" height="106" width="106">-->
+<img class="selectionBox game-5-box type-22-box" id="box5_11" onclick="openBox(5, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-1-box" id="box6_1" onclick="openBox(6, 1);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-2-box" id="box6_2" onclick="openBox(6, 2);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-3-box" id="box6_3" onclick="openBox(6, 3);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-4-box" id="box6_4" onclick="openBox(6, 4);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-5-box" id="box6_5" onclick="openBox(6, 5);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-6-box" id="box6_6" onclick="openBox(6, 6);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-7-box" id="box6_7" onclick="openBox(6, 7);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-8-box" id="box6_8" onclick="openBox(6, 8);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-9-box" id="box6_9" onclick="openBox(6, 9);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-10-box" id="box6_10" onclick="openBox(6, 10);" src="./blank.png" height="106" width="106">
+<!--<img class="selectionBox game-6-box type-11-box" id="box6_11" onclick="openBox(6, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-12-box" id="box6_12" onclick="openBox(6, 12);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-13-box" id="box6_13" onclick="openBox(6, 13);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-14-box" id="box6_14" onclick="openBox(6, 14);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-15-box" id="box6_15" onclick="openBox(6, 15);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-16-box" id="box6_16" onclick="openBox(6, 16);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-17-box" id="box6_17" onclick="openBox(6, 17);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-18-box" id="box6_18" onclick="openBox(6, 18);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-19-box" id="box6_19" onclick="openBox(6, 19);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-20-box" id="box6_20" onclick="openBox(6, 20);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-6-box type-21-box" id="box6_21" onclick="openBox(6, 21);" src="./blank.png" height="106" width="106">-->
+<img class="selectionBox game-6-box type-22-box" id="box6_11" onclick="openBox(6, 11);" src="./blank.png" height="106" width="106">
+<!--<img class="selectionBox game-7-box type-1-box" id="box7_1" onclick="openBox(7, 1);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-2-box" id="box7_2" onclick="openBox(7, 2);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-3-box" id="box7_3" onclick="openBox(7, 3);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-4-box" id="box7_4" onclick="openBox(7, 4);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-5-box" id="box7_5" onclick="openBox(7, 5);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-6-box" id="box7_6" onclick="openBox(7, 6);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-7-box" id="box7_7" onclick="openBox(7, 7);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-8-box" id="box7_8" onclick="openBox(7, 8);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-9-box" id="box7_9" onclick="openBox(7, 9);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-10-box" id="box7_10" onclick="openBox(7, 10);" src="./blank.png" height="106" width="106">-->
+<!--<img class="selectionBox game-7-box type-11-box" id="box7_11" onclick="openBox(7, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-12-box" id="box7_12" onclick="openBox(7, 12);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-13-box" id="box7_13" onclick="openBox(7, 13);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-14-box" id="box7_14" onclick="openBox(7, 14);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-15-box" id="box7_15" onclick="openBox(7, 15);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-16-box" id="box7_16" onclick="openBox(7, 16);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-17-box" id="box7_17" onclick="openBox(7, 17);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-18-box" id="box7_18" onclick="openBox(7, 18);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-19-box" id="box7_19" onclick="openBox(7, 19);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-20-box" id="box7_20" onclick="openBox(7, 20);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-7-box type-21-box" id="box7_21" onclick="openBox(7, 21);" src="./blank.png" height="106" width="106">-->
+<!--<img class="selectionBox game-7-box type-22-box" id="box7_22" onclick="openBox(7, 22);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-1-box" id="box8_1" onclick="openBox(8, 1);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-2-box" id="box8_2" onclick="openBox(8, 2);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-3-box" id="box8_3" onclick="openBox(8, 3);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-4-box" id="box8_4" onclick="openBox(8, 4);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-5-box" id="box8_5" onclick="openBox(8, 5);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-6-box" id="box8_6" onclick="openBox(8, 6);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-7-box" id="box8_7" onclick="openBox(8, 7);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-8-box" id="box8_8" onclick="openBox(8, 8);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-9-box" id="box8_9" onclick="openBox(8, 9);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-10-box" id="box8_10" onclick="openBox(8, 10);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-11-box" id="box8_11" onclick="openBox(8, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-12-box" id="box8_12" onclick="openBox(8, 12);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-13-box" id="box8_13" onclick="openBox(8, 13);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-14-box" id="box8_14" onclick="openBox(8, 14);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-15-box" id="box8_15" onclick="openBox(8, 15);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-16-box" id="box8_16" onclick="openBox(8, 16);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-17-box" id="box8_17" onclick="openBox(8, 17);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-18-box" id="box8_18" onclick="openBox(8, 18);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-19-box" id="box8_19" onclick="openBox(8, 19);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-20-box" id="box8_20" onclick="openBox(8, 20);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-21-box" id="box8_21" onclick="openBox(8, 21);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-8-box type-22-box" id="box8_22" onclick="openBox(8, 22);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-1-box" id="box9_1" onclick="openBox(9, 1);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-2-box" id="box9_2" onclick="openBox(9, 2);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-3-box" id="box9_3" onclick="openBox(9, 3);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-4-box" id="box9_4" onclick="openBox(9, 4);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-5-box" id="box9_5" onclick="openBox(9, 5);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-6-box" id="box9_6" onclick="openBox(9, 6);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-7-box" id="box9_7" onclick="openBox(9, 7);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-8-box" id="box9_8" onclick="openBox(9, 8);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-9-box" id="box9_9" onclick="openBox(9, 9);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-10-box" id="box9_10" onclick="openBox(9, 10);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-11-box" id="box9_11" onclick="openBox(9, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-12-box" id="box9_12" onclick="openBox(9, 12);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-13-box" id="box9_13" onclick="openBox(9, 13);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-14-box" id="box9_14" onclick="openBox(9, 14);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-15-box" id="box9_15" onclick="openBox(9, 15);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-16-box" id="box9_16" onclick="openBox(9, 16);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-17-box" id="box9_17" onclick="openBox(9, 17);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-18-box" id="box9_18" onclick="openBox(9, 18);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-19-box" id="box9_19" onclick="openBox(9, 19);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-20-box" id="box9_20" onclick="openBox(9, 20);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-21-box" id="box9_21" onclick="openBox(9, 21);" src="./blank.png" height="106" width="106">
+<img class="selectionBox game-9-box type-22-box" id="box9_22" onclick="openBox(9, 22);" src="./blank.png" height="106" width="106">-->
+<img class="selectionBox fav-type-box type-1-box" id="box7_1" onclick="openBox(7, 1);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-2-box" id="box7_2" onclick="openBox(7, 2);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-3-box" id="box7_3" onclick="openBox(7, 3);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-4-box" id="box7_4" onclick="openBox(7, 4);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-5-box" id="box7_5" onclick="openBox(7, 5);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-6-box" id="box7_6" onclick="openBox(7, 6);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-7-box" id="box7_7" onclick="openBox(7, 7);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-8-box" id="box7_8" onclick="openBox(7, 8);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-9-box" id="box7_9" onclick="openBox(7, 9);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-10-box" id="box7_10" onclick="openBox(7, 10);" src="./blank.png" height="106" width="106">
+<!--<img class="selectionBox fav-type-box type-11-box" id="box10_11" onclick="openBox(10, 11);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-12-box" id="box10_12" onclick="openBox(10, 12);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-13-box" id="box10_13" onclick="openBox(10, 13);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-14-box" id="box10_14" onclick="openBox(10, 14);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-15-box" id="box10_15" onclick="openBox(10, 15);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-16-box" id="box10_16" onclick="openBox(10, 16);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-17-box" id="box10_17" onclick="openBox(10, 17);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-18-box" id="box10_18" onclick="openBox(10, 18);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-19-box" id="box10_19" onclick="openBox(10, 19);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-20-box" id="box10_20" onclick="openBox(10, 20);" src="./blank.png" height="106" width="106">
+<img class="selectionBox fav-type-box type-21-box" id="box10_21" onclick="openBox(10, 21);" src="./blank.png" height="106" width="106">-->
+<img class="selectionBox fav-type-box type-22-box" id="box7_11" onclick="openBox(7, 11);" src="./blank.png" height="106" width="106">
+	<!--<img class="charm" id="charm" src="./charm.png" alt="" height="64" width="64" onclick="activateShiny();" />-->
+<span id="preview-boxes">
+	<img class="preview" id="preview0" src="./blank.png" height="106" width="106" onclick="pickSkylander(0);">
+	<img class="preview" id="preview1" src="./blank.png" height="106" width="106" onclick="pickSkylander(1);">
+	<img class="preview" id="preview2" src="./blank.png" height="106" width="106" onclick="pickSkylander(2);">
+	<img class="preview" id="preview3" src="./blank.png" height="106" width="106" onclick="pickSkylander(3);">
+	<img class="preview" id="preview4" src="./blank.png" height="106" width="106" onclick="pickSkylander(4);">
+	<img class="preview" id="preview5" src="./blank.png" height="106" width="106" onclick="pickSkylander(5);">
+	<img class="preview" id="preview6" src="./blank.png" height="106" width="106" onclick="pickSkylander(6);">
+	<img class="preview" id="preview7" src="./blank.png" height="106" width="106" onclick="pickSkylander(7);">
+	<img class="preview" id="preview8" src="./blank.png" height="106" width="106" onclick="pickSkylander(8);">
+	<img class="preview" id="preview9" src="./blank.png" height="106" width="106" onclick="pickSkylander(9);">
+	<img class="preview" id="preview10" src="./blank.png" height="106" width="106" onclick="pickSkylander(10);">
+	<img class="preview" id="preview11" src="./blank.png" height="106" width="106" onclick="pickSkylander(11);">
+	<img class="preview" id="preview12" src="./blank.png" height="106" width="106" onclick="pickSkylander(12);">
+	<img class="preview" id="preview13" src="./blank.png" height="106" width="106" onclick="pickSkylander(13);">
+	<img class="preview" id="preview14" src="./blank.png" height="106" width="106" onclick="pickSkylander(14);">
+	<img class="preview" id="preview15" src="./blank.png" height="106" width="106" onclick="pickSkylander(15);">
+	<img class="preview" id="preview16" src="./blank.png" height="106" width="106" onclick="pickSkylander(16);">
+	<img class="preview" id="preview17" src="./blank.png" height="106" width="106" onclick="pickSkylander(17);">
+	<img class="preview" id="preview18" src="./blank.png" height="106" width="106" onclick="pickSkylander(18);">
+	<img class="preview" id="preview19" src="./blank.png" height="106" width="106" onclick="pickSkylander(19);">
+	<img class="preview" id="preview20" src="./blank.png" height="106" width="106" onclick="pickSkylander(20);">
+	<img class="preview" id="preview21" src="./blank.png" height="106" width="106" onclick="pickSkylander(21);">
+	<img class="preview" id="preview22" src="./blank.png" height="106" width="106" onclick="pickSkylander(22);">
+	<img class="preview" id="preview23" src="./blank.png" height="106" width="106" onclick="pickSkylander(23);">
+	<img class="preview" id="preview24" src="./blank.png" height="106" width="106" onclick="pickSkylander(24);">
+	<img class="preview" id="preview25" src="./blank.png" height="106" width="106" onclick="pickSkylander(25);">
+	<img class="preview" id="preview26" src="./blank.png" height="106" width="106" onclick="pickSkylander(26);">
+	<img class="preview" id="preview27" src="./blank.png" height="106" width="106" onclick="pickSkylander(27);">
+	<img class="preview" id="preview28" src="./blank.png" height="106" width="106" onclick="pickSkylander(28);">
+	<img class="preview" id="preview29" src="./blank.png" height="106" width="106" onclick="pickSkylander(29);">
+	<img class="preview" id="preview30" src="./blank.png" height="106" width="106" onclick="pickSkylander(30);">
+	<img class="preview" id="preview31" src="./blank.png" height="106" width="106" onclick="pickSkylander(31);">
+	<img class="preview" id="preview32" src="./blank.png" height="106" width="106" onclick="pickSkylander(32);">
+	<img class="preview" id="preview33" src="./blank.png" height="106" width="106" onclick="pickSkylander(33);">
+	<img class="preview" id="preview34" src="./blank.png" height="106" width="106" onclick="pickSkylander(34);">
+	<img class="preview" id="preview35" src="./blank.png" height="106" width="106" onclick="pickSkylander(35);">
+	<img class="preview" id="preview36" src="./blank.png" height="106" width="106" onclick="pickSkylander(36);">
+	<img class="preview" id="preview37" src="./blank.png" height="106" width="106" onclick="pickSkylander(37);">
+	<img class="preview" id="preview38" src="./blank.png" height="106" width="106" onclick="pickSkylander(38);">
+	<img class="preview" id="preview39" src="./blank.png" height="106" width="106" onclick="pickSkylander(39);">
+	<img class="preview" id="preview40" src="./blank.png" height="106" width="106" onclick="pickSkylander(40);">
+	<img class="preview" id="preview41" src="./blank.png" height="106" width="106" onclick="pickSkylander(41);">
+	<img class="preview" id="preview42" src="./blank.png" height="106" width="106" onclick="pickSkylander(42);">
+	<img class="preview" id="preview43" src="./blank.png" height="106" width="106" onclick="pickSkylander(43);">
+	<img class="preview" id="preview44" src="./blank.png" height="106" width="106" onclick="pickSkylander(44);">
+	<img class="preview" id="preview45" src="./blank.png" height="106" width="106" onclick="pickSkylander(45);">
+	<img class="preview" id="preview46" src="./blank.png" height="106" width="106" onclick="pickSkylander(46);">
+	<img class="preview" id="preview47" src="./blank.png" height="106" width="106" onclick="pickSkylander(47);">
+	<img class="preview" id="preview48" src="./blank.png" height="106" width="106" onclick="pickSkylander(48);">
+	<img class="preview" id="preview49" src="./blank.png" height="106" width="106" onclick="pickSkylander(49);">
+	<img class="preview" id="preview50" src="./blank.png" height="106" width="106" onclick="pickSkylander(50);">
+	<img class="preview" id="preview51" src="./blank.png" height="106" width="106" onclick="pickSkylander(51);">
+	<img class="preview" id="preview52" src="./blank.png" height="106" width="106" onclick="pickSkylander(52);">
+	<img class="preview" id="preview53" src="./blank.png" height="106" width="106" onclick="pickSkylander(53);">
+	<img class="preview" id="preview54" src="./blank.png" height="106" width="106" onclick="pickSkylander(54);">
+	<img class="preview" id="preview55" src="./blank.png" height="106" width="106" onclick="pickSkylander(55);">
+	<img class="preview" id="preview56" src="./blank.png" height="106" width="106" onclick="pickSkylander(56);">
+	<img class="preview" id="preview57" src="./blank.png" height="106" width="106" onclick="pickSkylander(57);">
+	<img class="preview" id="preview58" src="./blank.png" height="106" width="106" onclick="pickSkylander(58);">
+	<img class="preview" id="preview59" src="./blank.png" height="106" width="106" onclick="pickSkylander(59);">
+
+	<span id="button-wrapper">
+		<a id="downloader" download="download"></a>
+		<br><input type="button" id="btnPrint" value="Download Image" onclick="drawFinal()" target="_blank" />
+		<input type="button" id="btnExport" value="Export Choices" onclick="printTextbox()" />
+		<input type="button" id="btnLoad" value="Import Choices" onclick="loadTextbox()" />
+		<input type="button" id="btnReset" value="Reset The Grid!" onclick="resetGrid()" />
+	</span>
+<textarea id="import" rows="13" cols="72" spellcheck="false">
+# Don't like my choices? You can overrule them here!
+# Write Code will put a text version of the grid here
+# Then you can edit the names and Import Code to replace the images.
+# Most Skylanders are just their names with proper capitalization, like TriggerHappy.
+# Special forms have specific tags, like LightCoreDrobot for LightCore Drobot.
+# You can also use this to keep backups
+</textarea>
+	<div class="bubble" id="bubble"></div>
+	<img class="aura" id="aura0"></img>
+	<img class="aura" id="aura1"></img>
+	<img class="aura" id="aura2"></img>
+	<div class="translate-wrapper bottom-row1-label bottom-box-1-label"><div class="grid-text" id="Game">Favorite<br>Game</div></div>
+	<div class="translate-wrapper bottom-row1-label bottom-box-2-label"><div class="grid-text" id="Element">Favorite<br>Element</div></div>
+	<div class="translate-wrapper bottom-row1-label bottom-box-3-label"><div class="grid-text" id="AdventurePack">Favorite<br>Adventure Pack</div></div>
+	<div class="translate-wrapper bottom-row1-label bottom-box-4-label"><div class="grid-text" id="MagicItem">Favorite<br>Magic Item</div></div>
+	<div class="translate-wrapper bottom-row1-label bottom-box-5-label"><div class="grid-text" id="Trap">Favorite<br>Trap</div></div>
+	<div class="translate-wrapper bottom-row1-label bottom-box-6-label"><div class="grid-text" id="Villain">Favorite<br>Trappable Villain</div></div>
+	<div class="translate-wrapper bottom-row1-label bottom-box-7-label"><div class="grid-text" id="CreationCrystal">Favorite<br>Creation Crystal</div></div>
+	<div class="translate-wrapper bottom-row2-label bottom-box-1-label"><div class="grid-text" id="LandVehicle">Favorite<br>Land Vehicle</div></div>
+	<div class="translate-wrapper bottom-row2-label bottom-box-2-label"><div class="grid-text" id="SkyVehicle">Favorite<br>Sky Vehicle</div></div>
+	<div class="translate-wrapper bottom-row2-label bottom-box-3-label"><div class="grid-text" id="SeaVehicle">Favorite<br>Sea Vehicle</div></div>
+	<div class="translate-wrapper bottom-row2-label bottom-box-4-label"><div class="grid-text" id="Mini">Favorite<br>Mini</div></div>
+	<div class="translate-wrapper bottom-row2-label bottom-box-5-label"><div class="grid-text" id="Lightcore">Favorite<br>Lightcore</div></div>
+	<div class="translate-wrapper bottom-row2-label bottom-box-6-label"><div class="grid-text" id="EonsElite">Favorite<br>Eon's Elite'</div></div>
+	<div class="translate-wrapper bottom-row2-label bottom-box-7-label"><div class="grid-text" id="Variant">Favorite<br>Variant</div></div>
+	<div id="type-wrapper">
+		<div class="translate-wrapper type-box"><div class="type-text" id="Air">Air</div></div>
+		<div class="translate-wrapper type-box" style="left:107px;"><div class="type-text" id="Life">Life</div></div>
+		<div class="translate-wrapper type-box" style="left:214px;"><div class="type-text" id="Undead">Undead</div></div>
+		<div class="translate-wrapper type-box" style="left:321px;"><div class="type-text" id="Earth">Earth</div></div>
+		<div class="translate-wrapper type-box" style="left:428px;"><div class="type-text" id="Fire">Fire</div></div>
+		<div class="translate-wrapper type-box" style="left:535px;"><div class="type-text" id="Water">Water</div></div>
+		<div class="translate-wrapper type-box" style="left:642px;"><div class="type-text" id="Magic">Magic</div></div>
+		<div class="translate-wrapper type-box" style="left:748px;"><div class="type-text" id="Tech">Tech</div></div>
+		<div class="translate-wrapper type-box" style="left:853px;"><div class="type-text" id="Light">Light</div></div>
+		<div class="translate-wrapper type-box" style="left:962px;"><div class="type-text" id="Dark">Dark</div></div>
+	</div>
+</div>
+<div id="credits">
+	<b>Updates</b><br>
+	• I know Kaos isn't a Dark Skylander in Imaginators, but I didn't think it would be right to make a whole Element option for a single figure in a single game.<br>
+	<b>Credits</b><br>
+	• ORIGINAL POKEMON FAVOURITE PICKER THIS APP IS BASED UPON IS BY CAJUNAVENGER, <a href="https://cajunavenger.github.io/">YOU CAN FIND THEM AND THE ORIGINAL APP HERE</a> -
+	<a href="https://github.com/CajunAvenger/cajunavenger.github.io">Source Code</a><br>
+	• ORIGINAL BACKGROUND MADE BY <a href="https://www.reddit.com/r/skylanders/comments/1lroitn/skylanders_favourite_picker_template/#lightbox">BICEON ON REDDIT</a><br>
+	• All renders and photos from <a href="https://skylanderscharacterlist.com/">Skylanders Character List</a><br>
+	• If you want to support more code silliness, you can donate to cajun's <s> caffeine addiction</s> <a href="https://ko-fi.com/cajun42">Ko-Fi</a>.<br>
+	<br>
+</div>
+</body>
+</html>
