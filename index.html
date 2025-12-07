@@ -272,7 +272,7 @@ canvas {
 	filter: drop-shadow(2px 2px 0px #000);
 	font-family: "Copenhagen Grotesk";
 	color: white;
-	font-size: 22;
+	font-size: 22px;
 	z-index: 3;
 	text-align: center;
 	width: inherit;
@@ -669,19 +669,19 @@ canvas {
         var trapold = 0;
         var villainold = 0;
         var crystalold = 0;
-		if (currently_selecting[1] > VARIANT_MIN && currently_selecting[1] <= VARIANT_MAX) {
+        if (currently_selecting[0] == 0 && currently_selecting[1] > VARIANT_MIN && currently_selecting[1] <= VARIANT_MAX) {
 			variantold = currently_selecting[1];
 			currently_selecting[1] = VARIANT_MIN;
 		}
-        if (currently_selecting[1] > TRAP_MIN && currently_selecting[1] <= TRAP_MAX) {
+        if (currently_selecting[0] == 0 && currently_selecting[1] > TRAP_MIN && currently_selecting[1] <= TRAP_MAX) {
             trapold = currently_selecting[1];
             currently_selecting[1] = TRAP_MIN;
 		}
-        if (currently_selecting[1] > VILLAIN_MIN && currently_selecting[1] <= VILLAIN_MAX) {
+        if (currently_selecting[0] == 0 && currently_selecting[1] > VILLAIN_MIN && currently_selecting[1] <= VILLAIN_MAX) {
             villainold = currently_selecting[1];
             currently_selecting[1] = VILLAIN_MIN;
 		}
-        if (currently_selecting[1] > CRYSTAL_MIN && currently_selecting[1] <= CRYSTAL_MAX) {
+        if (currently_selecting[0] == 0 && currently_selecting[1] > CRYSTAL_MIN && currently_selecting[1] <= CRYSTAL_MAX) {
             crystalold = currently_selecting[1];
             currently_selecting[1] = CRYSTAL_MIN;
         }
@@ -815,7 +815,7 @@ canvas {
 	function drawFinal() {
 		var canvas = document.getElementById("final");
 		var ctx = canvas.getContext("2d");
-		ctx.drawImage(document.getElementById('back'), 0, 0);
+        ctx.drawImage(document.getElementById('back'), 0, 0, 1280, 1407);
 		// draw the skylander
 		for(var g=0; g<11; g++) {
 			for(var t=1; t<=MAX_BOX; t++) {
@@ -839,7 +839,7 @@ canvas {
 			var par = ele.offsetParent;
 			var full_text = ele.innerHTML;
 			var test_pieces = full_text.split(/<br\/?>/);
-			var font_px = (ele.style.fontSize || "27px")
+			var font_px = (ele.style.fontSize || "18px")
 			var font_size = parseInt(font_px.replace(/px/, ""));
 			var canvas_font = font_px + " " + font_name
 			ctx.font = canvas_font;
@@ -877,7 +877,7 @@ canvas {
 			// add text pieces from the bottom up
 			for(var p=0; p<pieces.length; p++) {
 				var fragment = pieces[pieces.length-1-p];
-				var label_t = 30 + par.offsetTop + (font_size+5)*(1-p);
+				var label_t = 41 + par.offsetTop + (font_size+5)*(1-p);
 				var label_l = 100 + par.offsetLeft;
 				ctx.fillText(fragment, label_l, label_t);
 			}
@@ -890,11 +890,11 @@ canvas {
 			var par = ele.offsetParent;
 			var full_text = ele.innerHTML;
 			var pieces = full_text.split(/<br\/?>/);
-			var font_px = (ele.style.fontSize || "25px")
+			var font_px = (ele.style.fontSize || "22px")
 			var font_size = parseInt(font_px.replace(/px/, ""));
 			var canvas_font = font_px + " " + font_name
 			ctx.font = canvas_font;
-			var start_at = 61;
+			var start_at = 253;
 			if(pieces.length > 1)
 				start_at -= 15;
 			if(font_size < 25)
@@ -902,7 +902,7 @@ canvas {
 			for(var p=0; p<pieces.length; p++) {
 				var fragment = pieces[p];
 				var label_t = start_at;
-				var label_l = 148 + par.offsetLeft;
+				var label_l = 159 + par.offsetLeft;
 				// draw drop shadow offset 2 px;
 				ctx.fillStyle = "#000000";
 				ctx.fillText(fragment, label_l+2, label_t+2);
@@ -912,6 +912,12 @@ canvas {
 				start_at += 9 + font_size;
 			}
 		}
+        ctx.fillText(te, 240, 1245)
+        canvas.style.zIndex = -1;
+        var dbutton = document.getElementById("downloader")
+        dbutton.href = canvas.toDataURL("image/png");
+        dbutton.innerHTML = getTranslString("downloader");
+        dbutton.click()
 	}
 	function rand(scale) {
 		return Math.floor(Math.random()*scale)
